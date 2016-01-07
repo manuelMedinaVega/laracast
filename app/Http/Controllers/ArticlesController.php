@@ -33,5 +33,6 @@ class ArticlesController extends Controller
         //$this->validate($request,['title'=>'required','body'=>'required']); //este es otro metodo sin tener que crear una clase request
         Article::create($request->all());
         return redirect('articles');
+
     }
 }

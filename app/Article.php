@@ -21,7 +21,7 @@ class Article extends Model
     	$this->attributes['published_at']=Carbon::parse($date); 
     }
 
-    //scopes
+    //scopes, para que solo se muestren los q esten antes de la fecha actual, los que tienen fecha en el futuro no se muestran
     public function scopePublished($query){ 
     	$query->where('published_at','<=',Carbon::now());
     }
