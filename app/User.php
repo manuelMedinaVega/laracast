@@ -36,4 +36,10 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+                                        
+    /*Esta funcion sirve para definir la relacion que existe entre un usuario y articulos,
+    un usuario puede tener muchos articulos*/                                    
+    public function articles(){
+        return $this->hasMany('App\Article');
+    }
 }

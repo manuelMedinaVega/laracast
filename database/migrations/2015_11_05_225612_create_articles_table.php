@@ -14,10 +14,22 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('body');
             $table->timestamps();
             $table->timestamp('published_at');
+            
+            /*Para eliminar los articulos que pertenecen a los usuarios
+            tenemos que decir que sera delete cascade, para eso escribimos
+            esta linea:*/
+            
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+            
+            
         });
     }
 

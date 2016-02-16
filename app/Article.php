@@ -11,7 +11,8 @@ class Article extends Model
     protected $fillable=[
     	'title',
     	'body',
-    	'published_at'
+    	'published_at',
+        'user_id' //temporalmente
     ];
 
     protected $dates=['published_at']; //cambia el atributo published_at a una instancia de Carbon
@@ -28,5 +29,11 @@ class Article extends Model
 
     public function scopeUnpublished($query){
     	$query->where('published_at','>',Carbon::now());
+    }
+    
+    /*Esta funcion sirve para definir la relacion que existe entre un articulo y usuario,
+    un articulo pertenece a un usuario*/                                   
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }
